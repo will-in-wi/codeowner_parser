@@ -1,0 +1,16 @@
+# Line length is more trouble than it's worth, IMO. Be reasonable.
+Layout/LineLength:
+  Enabled: false
+
+
+# Enable newly released cops:
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
