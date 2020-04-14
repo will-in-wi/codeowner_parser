@@ -1,8 +1,10 @@
 # CodeownerParser
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/codeowner_parser`. To experiment with that code, run `bin/console` for an interactive prompt.
+The goal of this gem is primarily to parse a CODEOWNER file and return the team associated with a file given the file path.
 
-TODO: Delete this and the text above, and describe your gem
+An ancillary goal is to allow you to route errors to a different team by file.
+
+The core of this is [extracted from GitLab](https://gitlab.com/gitlab-org/gitlab/-/commit/0eb7f50a80b1333537156a04127cd86c51bffb9f).
 
 ## Installation
 
@@ -32,5 +34,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/codeowner_parser.
+Bug reports and pull requests are welcome on GitHub at https://github.com/will-in-wi/codeowner_parser.
 
