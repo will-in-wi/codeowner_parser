@@ -11,6 +11,9 @@ Metrics/BlockLength:
     # Specs are generally long.
     - 'spec/**/*'
 
+RSpec/NestedGroups:
+  Enabled: false
+
 # Enable newly released cops:
 Lint/RaiseException:
   Enabled: true
