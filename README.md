@@ -22,7 +22,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+See [GitHub's documentation](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners#example-of-a-codeowners-file) for examples of codeowner files.
+
+```ruby
+require 'codeowner_parser'
+
+str = <<~CODEOWNERS
+*       @global-owner1 @global-owner2
+*.js    @js-owner
+*.go docs@example.com
+/build/logs/ @doctocat
+docs/*  docs@example.com
+apps/ @octocat
+/docs/ @doctocat
+CODEOWNERS
+
+parser = CodeownerParser.parse(str)
+parser.owner('/build/docs/blah.json')
+# => docs@example.com
+```
 
 ## Development
 
