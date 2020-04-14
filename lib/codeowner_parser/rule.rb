@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
-require 'pathname'
-
 module CodeownerParser
   # Handles an individual rule and determines applicability.
   class Rule
     attr_reader :owner
 
     def initialize(rule_string)
-      # It looks like a common denominator is that there are two chunks, each
-      # of which contain no spaces.
-      @rule_path, @owner = rule_string.split(/\s+/)
+      @rule_path, *@owner = rule_string.split(/\s+/)
+      # Precompute this so that we aren't doing so repeatedly for additional checks.
       @rule_regex = path_regex
     end
 

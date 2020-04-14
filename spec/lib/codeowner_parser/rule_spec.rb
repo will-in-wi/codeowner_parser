@@ -23,7 +23,7 @@ RSpec.describe CodeownerParser::Rule do
 
     it { is_expected.to apply_to('blah.js') }
     it { is_expected.not_to apply_to('blah.rb') }
-    it { is_expected.to have_owner('@js-owner') }
+    it { is_expected.to have_owner(['@js-owner']) }
   end
 
   context 'with go extension and email owner' do
@@ -31,7 +31,7 @@ RSpec.describe CodeownerParser::Rule do
 
     it { is_expected.to apply_to('blah.go') }
     it { is_expected.not_to apply_to('blah.rb') }
-    it { is_expected.to have_owner('docs@example.com') }
+    it { is_expected.to have_owner(['docs@example.com']) }
   end
 
   context 'with entire specific folder' do
@@ -41,7 +41,7 @@ RSpec.describe CodeownerParser::Rule do
     it { is_expected.not_to apply_to('/logs/blah.go') }
     it { is_expected.not_to apply_to('/tmp/build/logs/blah.go') }
     it { is_expected.not_to apply_to('blah.rb') }
-    it { is_expected.to have_owner('@doctocat') }
+    it { is_expected.to have_owner(['@doctocat']) }
   end
 
   context 'with entire rooted folder structure' do
@@ -52,7 +52,7 @@ RSpec.describe CodeownerParser::Rule do
     it { is_expected.not_to apply_to('/logs/blah.go') }
     it { is_expected.not_to apply_to('/tmp/build/logs/blah.go') }
     it { is_expected.not_to apply_to('blah.rb') }
-    it { is_expected.to have_owner('@doctocat') }
+    it { is_expected.to have_owner(['@doctocat']) }
   end
 
   context 'with specific unrooted folder' do
@@ -64,7 +64,7 @@ RSpec.describe CodeownerParser::Rule do
     it { is_expected.not_to apply_to('/build/docs/other/blah.go') }
     it { is_expected.not_to apply_to('/logs/blah.go') }
     it { is_expected.not_to apply_to('blah.rb') }
-    it { is_expected.to have_owner('docs@example.com') }
+    it { is_expected.to have_owner(['docs@example.com']) }
   end
 
   context 'with entire unrooted folder' do
@@ -75,7 +75,7 @@ RSpec.describe CodeownerParser::Rule do
     it { is_expected.to apply_to('/apps/blah/blah.go') }
     it { is_expected.not_to apply_to('/logs/blah.go') }
     it { is_expected.not_to apply_to('blah.rb') }
-    it { is_expected.to have_owner('@octocat') }
+    it { is_expected.to have_owner(['@octocat']) }
   end
 
   context 'with entire rooted folder' do
@@ -86,6 +86,23 @@ RSpec.describe CodeownerParser::Rule do
     it { is_expected.not_to apply_to('/help/docs/blah.go') }
     it { is_expected.not_to apply_to('/logs/blah.go') }
     it { is_expected.not_to apply_to('blah.rb') }
-    it { is_expected.to have_owner('@doctocat') }
+    it { is_expected.to have_owner(['@doctocat']) }
+  end
+
+  context 'with wildcard' do
+    let(:rule_string) { '*   @doctocat' }
+
+    it { is_expected.to apply_to('/docs/blah.go') }
+    it { is_expected.to apply_to('/docs/blah/blah.go') }
+    it { is_expected.to apply_to('/help/docs/blah.go') }
+    it { is_expected.to apply_to('/logs/blah.go') }
+    it { is_expected.to apply_to('blah.rb') }
+    it { is_expected.to have_owner(['@doctocat']) }
+  end
+
+  context 'with multiple owners' do
+    let(:rule_string) { '/docs/ @doctocat @doctor' }
+
+    it { is_expected.to have_owner(['@doctocat', '@doctor']) }
   end
 end
