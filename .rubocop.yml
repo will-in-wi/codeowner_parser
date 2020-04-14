@@ -1,7 +1,15 @@
+require:
+- rubocop-rspec
+- rubocop-performance
+
 # Line length is more trouble than it's worth, IMO. Be reasonable.
 Layout/LineLength:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    # Specs are generally long.
+    - 'spec/**/*'
 
 # Enable newly released cops:
 Lint/RaiseException:
