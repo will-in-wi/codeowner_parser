@@ -14,6 +14,9 @@ Metrics/BlockLength:
 RSpec/NestedGroups:
   Enabled: false
 
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
 # Enable newly released cops:
 Lint/RaiseException:
   Enabled: true
