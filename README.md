@@ -4,8 +4,6 @@ The goal of this gem is primarily to parse a CODEOWNER file and return the team 
 
 An ancillary goal is to allow you to route errors to a different team by file.
 
-The core of this is [extracted from GitLab](https://gitlab.com/gitlab-org/gitlab/-/commit/0eb7f50a80b1333537156a04127cd86c51bffb9f).
-
 ## Installation
 
 Add this line to your application's Gemfile:
