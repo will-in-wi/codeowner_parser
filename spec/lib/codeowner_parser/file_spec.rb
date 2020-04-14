@@ -85,5 +85,30 @@ RSpec.describe CodeownerParser::File do
         it { is_expected.to eq([]) }
       end
     end
+
+    context 'with invalid rules' do
+      let(:file_string) do
+        <<~CODEOWNERS
+          # This has no owner
+          *.js
+        CODEOWNERS
+      end
+
+      context 'with js file' do
+        let(:path) { 'blah.js' }
+
+        it { is_expected.to eq([]) }
+      end
+    end
+
+    context 'with nil file' do
+      let(:file_string) { nil }
+
+      context 'with js file' do
+        it 'raises an ArgumentError' do
+          expect { code_owner }.to raise_error(ArgumentError)
+        end
+      end
+    end
   end
 end

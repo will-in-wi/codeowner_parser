@@ -8,6 +8,8 @@ module CodeownerParser
     def initialize(file_string)
       @file_string = file_string
 
+      raise ArgumentError, 'CODEOWNER file cannot be nil' if @file_string.nil?
+
       # Precompute for repeated access. Reverse because of reverse precedence.
       @rules = rules.reverse
     end
