@@ -39,7 +39,7 @@ CODEOWNERS
 
 parser = CodeownerParser.parse(str)
 parser.owner('/build/docs/blah.json')
-# => docs@example.com
+# => ['docs@example.com']
 ```
 
 ## Development
