@@ -12,5 +12,5 @@ gem 'rubocop', '~> 0.81.0'
 gem 'rubocop-performance', '1.5', require: false
 gem 'rubocop-rspec', '~> 1.38', require: false
 
-gem 'byebug'
-gem 'pry-byebug'
+gem 'byebug', platforms: %i[mri mingw x64_mingw]
+gem 'pry-byebug', platforms: %i[mri mingw x64_mingw]
